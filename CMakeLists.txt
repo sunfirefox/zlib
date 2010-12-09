@@ -1,11 +1,11 @@
 # LuaDist Modifications:
 # Modified install destinations and removed versioning
+project(zlib C)
 
 cmake_minimum_required(VERSION 2.4.4)
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
-include(dist.cmake)
 
-project(zlib C)
+include(dist.cmake)
 
 if(NOT DEFINED BUILD_SHARED_LIBS)
     option(BUILD_SHARED_LIBS "Build a shared library form of zlib" ON)
