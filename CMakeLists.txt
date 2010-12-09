@@ -11,6 +11,16 @@ if(NOT DEFINED BUILD_SHARED_LIBS)
     option(BUILD_SHARED_LIBS "Build a shared library form of zlib" ON)
 endif()
 
+# Handle ZLIB_WINAPI
+if(BUILD_SHARED_LIBS AND WIN32)
+	SET(ZLIB_SUFFIX "1.dll")
+	option(BUILD_ZLIB_WINAPI "Build with defined ZLIB_WINAPI. See windows readme for explanation." ON)
+endif()
+if(BUILD_ZLIB_WINAPI)
+	SET(ZLIB_SUFFIX "winapi.dll")	
+	ADD_DEFINITIONS(-DZLIB_WINAPI)
+endif()
+
 include(CheckTypeSize)
 include(CheckFunctionExists)
 include(CheckIncludeFile)
@@ -142,7 +152,7 @@ if(UNIX)
    set_target_properties(zlib PROPERTIES OUTPUT_NAME z)
 elseif(BUILD_SHARED_LIBS AND WIN32)
     # Creates zlib1.dll when building shared library version
-    set_target_properties(zlib PROPERTIES SUFFIX "1.dll")
+    set_target_properties(zlib PROPERTIES SUFFIX ${ZLIB_SUFFIX})
 endif()
 
 if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL )
