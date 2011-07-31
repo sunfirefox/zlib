@@ -13,11 +13,11 @@ endif()
 
 # Handle ZLIB_WINAPI
 if(BUILD_SHARED_LIBS AND WIN32)
-	SET(ZLIB_SUFFIX "1.dll")
+#	SET(ZLIB_SUFFIX "1.dll")
 	option(BUILD_ZLIB_WINAPI "Build with defined ZLIB_WINAPI. See windows readme for explanation." ON)
 endif()
 if(BUILD_ZLIB_WINAPI)
-	SET(ZLIB_SUFFIX "winapi.dll")	
+#	SET(ZLIB_SUFFIX "winapi.dll")	
 	ADD_DEFINITIONS(-DZLIB_WINAPI)
 endif()
 
