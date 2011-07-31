@@ -152,7 +152,7 @@ if(UNIX)
    set_target_properties(zlib PROPERTIES OUTPUT_NAME z)
 elseif(BUILD_SHARED_LIBS AND WIN32)
     # Creates zlib1.dll when building shared library version
-    set_target_properties(zlib PROPERTIES SUFFIX ${ZLIB_SUFFIX})
+#    set_target_properties(zlib PROPERTIES SUFFIX ${ZLIB_SUFFIX})
 endif()
 
 if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL )
