@@ -1,26 +1,9 @@
-# LuaDist modified version of original CMakeLists.txt provided with zlib.
+# iLuaDist modified version of original CMakeLists.txt provided with zlib.
 
 # Modified install destinations and removed versioning
 project(zlib C)
-
-cmake_minimum_required(VERSION 2.4.4)
-set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
-
-include(dist.cmake)
-
-if(NOT DEFINED BUILD_SHARED_LIBS)
-    option(BUILD_SHARED_LIBS "Build a shared library form of zlib" ON)
-endif()
-
-# Handle ZLIB_WINAPI
-if(BUILD_SHARED_LIBS AND WIN32)
-#	SET(ZLIB_SUFFIX "1.dll")
-	option(BUILD_ZLIB_WINAPI "Build with defined ZLIB_WINAPI. See windows readme for explanation." OFF)
-	if(BUILD_ZLIB_WINAPI)
-	#	SET(ZLIB_SUFFIX "winapi.dll")	
-		ADD_DEFINITIONS(-DZLIB_WINAPI)
-	endif()
-endif()
+cmake_minimum_required(VERSION 2.6)
+include(cmake/dist.cmake)
 
 include(CheckTypeSize)
 include(CheckFunctionExists)
@@ -144,7 +127,7 @@ if(UNIX)
     set_target_properties(zlib PROPERTIES OUTPUT_NAME z)
 elseif(BUILD_SHARED_LIBS AND WIN32)
     # Creates zlib1.dll when building shared library version
-    #  set_target_properties(zlib PROPERTIES SUFFIX ${ZLIB_SUFFIX})
+    #removed:  set_target_properties(zlib PROPERTIES SUFFIX "1.dll")
 endif()
 
 install_library ( zlib )
@@ -154,6 +137,8 @@ install_doc ( zlib.3 INTO man/man3 )
 #============================================================================
 # Example binaries
 #============================================================================
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 add_executable(example test/example.c)
 target_link_libraries(example zlib)
