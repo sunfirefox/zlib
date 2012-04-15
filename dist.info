@@ -1,9 +1,9 @@
 --- This file is part of LuaDist project
 
 name = "zlib"
-version = "1.2.5"
+version = "1.2.6"
 
 desc = "zlib is a general purpose data compression library."
-license = "as-is"
+license = "zlib license"
 url = "http://zlib.net"
 maintainer = "Peter Kapec"
