@@ -108,11 +108,14 @@ set(ZLIB_SRCS
     trees.c
     uncompr.c
     zutil.c
-    win32/zlib1.rc
 )
 if ( MINGW )
     add_definitions(-DGCC_WINDRES) # for win32/zlib.rc
 endif ()
+
+if ( MINGW OR WIN32 )
+	set ( ZLIB_SRCS ${ZLIB_SRCS} win32/zlib1.rc )
+endif()
 
 # parse the full version number from zlib.h and include in ZLIB_FULL_VERSION
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/zlib.h _zlib_h_contents)
