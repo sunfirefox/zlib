@@ -1,8 +1,8 @@
-# iLuaDist modified version of original CMakeLists.txt provided with zlib.
-
+# LuaDist modified version of original CMakeLists.txt provided with zlib.
 # Modified install destinations and removed versioning
+
 project(zlib C)
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8)
 include(cmake/dist.cmake)
 
 include(CheckTypeSize)
