@@ -1,0 +1,25 @@
+type = "i686"
+arch = "Debian"
+author = "Jean-loup Gailly and Mark Adler"
+desc = "zlib is a general purpose data compression library."
+name = "zlib"
+maintainer = "Peter Kapec"
+files = {
+Runtime = {
+[[lib/libz.so]],
+}
+,
+Documentation = {
+[[share/zlib/doc/man/man3/zlib.3]],
+}
+,
+Header = {
+[[include/zconf.h]],
+[[include/zlib.h]],
+}
+,
+}
+
+license = "zlib license"
+url = "http://zlib.net"
+version = "1.2.6"
